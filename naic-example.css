@@ -1,0 +1,7 @@
+body {background: #f1f2f6;}
+[(click)], .clickable {cursor: pointer;}
+.bottom-buffer {margin-bottom: 10px;}
+.btn.btn-info.active, .btn.btn-info:active {
+	background-color: #37bc9b;
+	border-color: #48cfad;
+}
