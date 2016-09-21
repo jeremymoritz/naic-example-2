@@ -18,6 +18,4 @@ export class HomeComponent {
       increment: () => this.clickCounter.clicks++
     }
   }
-
-
 }

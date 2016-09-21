@@ -1,6 +1,4 @@
-declare var __moduleName: any;
-
-//  make TypeScript think it knows about these libraries:
+//  make TypeScript think it knows about these libraries (jQuery, lodash, & momentjs):
 declare var $: any;
 declare var _ : any;
 declare var moment: any;

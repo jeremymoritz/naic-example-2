@@ -1,24 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {HeroService} from './hero.service';
-import {HeroesComponent} from './heroes.component';
+import {NaicExampleService} from './naic-example.service';
 
 @Component({
 	moduleId: module.id,
 	selector: 'ne2-app',
 	template: `
-		<h1>{{title}}</h1>
-		<p>Using Bootstrap and AngularJS {{angularVersion}}</p>
-		<nav>
-			<a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-			<a routerLink="/heroes" routerLinkActive="active">Heroes</a>
-		</nav>
-		<router-outlet></router-outlet>
-	`,
-	styleUrls: ['./app.component.css']
+		<ne2-nav></ne2-nav>
+		<div class="container">
+			<ne2-header></ne2-header>
+			<router-outlet></router-outlet>
+		</div>
+	`
 })
 export class AppComponent {
 	title: string = 'NAIC Angular 2 Template App';
 	angularVersion: number = 2;
+
+	constructor(private nes: NaicExampleService) {
+		//	changing this service value (will persist to other components);
+		_.assign(nes, {serviceVariable: 'This is a service variable, available across multiple scopes through dependency injection'});
+	}
 }

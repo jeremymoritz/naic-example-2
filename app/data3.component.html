@@ -1,0 +1,68 @@
+<section><!-- Buttons -->
+	<h2>Buttons</h2>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="btn-group">
+				<button *ngFor="let button of buttons" type="button" [class]="'btn btn-' + button.code" [ngClass]="{active: buttonStates[button.code]}"
+					(click)="buttonStates[button.code] = !buttonStates[button.code]">
+					<i [class]="'fa fa-' + button.icon"></i>
+					{{button.text}}
+				</button>
+			</div>
+		</div>
+	</div>
+	<h2>Form</h2>
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="well">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-3">Name:</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" placeholder="Full Name" [(ngModel)]="thisForm.name" name="name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3">Address:</label>
+						<div class="col-sm-9">
+							<div class="row">
+								<div class="col-xs-12 bottom-buffer">
+									<label class="sr-only">Street Address</label>
+									<input class="form-control" type="text" placeholder="Street Address" [(ngModel)]="thisForm.address" name="address">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 bottom-buffer">
+									<label class="sr-only">City</label>
+									<input class="form-control" type="text" placeholder="City" [(ngModel)]="thisForm.city" name="city">
+								</div>
+								<div class="col-sm-3 bottom-buffer">
+									<label class="sr-only">State</label>
+									<select class="form-control" [(ngModel)]="thisForm.state" name="state">
+										<option value="" style="color: #888">--State--</option>
+										<option *ngFor="let state of usStateOptions" [value]="state.abbreviation">{{state.name}}</option>
+									</select>
+								</div>
+								<div class="col-sm-3 bottom-buffer">
+									<label class="sr-only">Zipcode</label>
+									<input class="form-control" type="text" placeholder="Zip" maxlength="5" [(ngModel)]="thisForm.postalCode" name="postalCode">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>Collected Info</h4>
+			<p>
+				<b>Name:</b> {{thisForm.name}}<br>
+				<b>Street Address:</b><br>
+					{{thisForm.address}}<br>
+					{{thisForm.city}}{{thisForm.city && thisForm.state ? ', ' : ''}}{{thisForm.state}} {{thisForm.postalCode}}
+			</p>
+		</div>
+	</div>
+</section>

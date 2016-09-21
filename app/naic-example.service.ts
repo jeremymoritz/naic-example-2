@@ -2,33 +2,7 @@ import {Injectable} from '@angular/core';
 import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import {Hero} from './hero';
-
-import {HeroesComponent} from './heroes.component';
-import {DashboardComponent} from './dashboard.component';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HomeComponent} from './home.component';
-
-const naicViews: any[] = [
-	{
-		path: '',
-		redirectTo: '/home',
-		pathMatch: 'full'
-	}, {
-		path: 'heroes',
-		component: HeroesComponent
-	}, {
-		path: 'dashboard',
-		component: DashboardComponent
-	}, {
-		path: 'detail/:id',
-		component: HeroDetailComponent
-	}, {
-		path: 'home',
-		component: HomeComponent
-	}
-];
-const supervisors: any[] = [
+let supervisors: any[] = [
 	{name: 'Alvin', department: 'HR'},
 	{name: 'Simon', department: 'Engineering'},
 	{name: 'Theodore', department: 'Accounts Payable'}
@@ -40,9 +14,7 @@ export class NaicExampleService {
 	views: any;
 	content: any;
 	supervisor: any;
-
-	private heroesUrl = 'app/heroes';	//	URL to web api
-	private headers = new Headers({'Content-Type': 'application/json'});
+	serviceVariable: string = '';
 
 	constructor(private http: Http) {
 		this.styles = [
@@ -53,7 +25,7 @@ export class NaicExampleService {
 			{code: 'warning', icon: 'exclamation-triangle'},
 			{code: 'danger', icon: 'trash-o'}
 		];
-		this.views = naicViews;
+		this.views = [];
 		this.content = null;
 		// this.supervisor = null;
 		this.supervisor = _.sample(supervisors);
