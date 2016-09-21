@@ -20,25 +20,25 @@ import {NaicExampleService} from './naic-example.service';
 import {routing} from './app.routing';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
-    routing
-  ],
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    NavComponent,
-    HomeComponent,
-    Data1Component,
-    Data2Component,
-    Data3Component
-  ],
-  providers: [
-    NaicExampleService
-  ],
-  bootstrap: [AppComponent]
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpModule,
+		InMemoryWebApiModule.forRoot(InMemoryDataService),
+		routing
+	],
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		NavComponent,
+		HomeComponent,
+		Data1Component,
+		Data2Component,
+		Data3Component
+	],
+	providers: [
+		NaicExampleService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule {}
