@@ -1,0 +1,6 @@
+section.jumbotron.text-center
+	h2 Moment: {{momentStamp}}
+	button.btn.btn-primary((click)='clickCounter.increment()')
+		i.fa.fa-lg([ngClass]="clickCounter.clicks ? 'fa-thumbs-o-up' : 'fa-hand-o-up'")
+		|  {{clickCounter.clicks ? 'Clicks: ' + clickCounter.clicks : 'Click Counter'}}
+	p(ng-if='contentLoaded()') #[strong Today's Supervisor:] {{nes.supervisor.name}} from {{nes.supervisor.department}}

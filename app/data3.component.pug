@@ -1,0 +1,46 @@
+section
+	h2 Buttons
+	.row
+		.col-xs-12
+			.btn-group
+				button(*ngFor='let button of buttons', type='button', [class]="'btn btn-' + button.code", [ngClass]='{active: buttonStates[button.code]}', (click)='buttonStates[button.code] = !buttonStates[button.code]')
+					| #[i([class]="'fa fa-' + button.icon")] {{button.text}}
+	h2 Form
+	.row
+		.col-sm-10.col-sm-offset-1
+			.well
+				form.form-horizontal
+					.form-group
+						label.control-label.col-sm-3 Name:
+						.col-sm-9
+							input.form-control(type='text', placeholder='Full Name', [(ngModel)]='thisForm.name', name='name')
+					.form-group
+						label.control-label.col-sm-3 Address:
+						.col-sm-9
+							.row
+								.col-xs-12.bottom-buffer
+									label.sr-only Street Address
+									input.form-control(type='text', placeholder='Street Address', [(ngModel)]='thisForm.address', name='address')
+							.row
+								.col-sm-6.bottom-buffer
+									label.sr-only City
+									input.form-control(type='text', placeholder='City', [(ngModel)]='thisForm.city', name='city')
+								.col-sm-3.bottom-buffer
+									label.sr-only State
+									select.form-control([(ngModel)]='thisForm.state', name='state')
+										option(value='', style='color: #888') --State--
+										option(*ngFor='let state of usStateOptions', [value]='state.abbreviation') {{state.name}}
+								.col-sm-3.bottom-buffer
+									label.sr-only Zipcode
+									input.form-control(type='text', placeholder='Zip', maxlength='5', [(ngModel)]='thisForm.postalCode', name='postalCode')
+					.form-group
+						label.control-label.col-sm-3 radio:
+						.col-sm-9
+							input(type='checkbox', name='nothing', checked)
+	.row
+		.col-xs-12
+			h4 Collected Info
+			p #[b Name:] {{thisForm.name}}#[br]
+				| #[b Street Address:]#[br]
+				| {{thisForm.address}}#[br]
+				| {{thisForm.city}}{{thisForm.city && thisForm.state ? ', ' : ''}}{{thisForm.state}} {{thisForm.postalCode}}

@@ -1,10 +1,6 @@
+
 <section class="jumbotron text-center">
   <h2>Moment: {{momentStamp}}</h2>
-	<button class="btn btn-primary" (click)="clickCounter.increment()">
-		<i class="fa fa-lg" [ngClass]="clickCounter.clicks ? 'fa-thumbs-o-up' : 'fa-hand-o-up'"></i>
-		{{clickCounter.clicks ? "Clicks: " + clickCounter.clicks : "Click Counter"}}
-	</button>
-	<p ng-if="contentLoaded()">
-		<strong>Today's Supervisor:</strong> {{nes.supervisor.name}} from {{nes.supervisor.department}}
-	</p>
+  <button class="btn btn-primary" (click)="clickCounter.increment()"><i class="fa fa-lg" [ngClass]="clickCounter.clicks ? 'fa-thumbs-o-up' : 'fa-hand-o-up'"></i> {{clickCounter.clicks ? 'Clicks: ' + clickCounter.clicks : 'Click Counter'}}</button>
+  <p ng-if="contentLoaded()"><strong>Today's Supervisor:</strong> {{nes.supervisor.name}} from {{nes.supervisor.department}}</p>
 </section>

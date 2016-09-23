@@ -1,0 +1,27 @@
+table.table.table-striped
+	caption.text-center AngularJS Variables in a Table
+	thead
+		tr
+			th Kind
+			th Explanation
+	tbody
+		tr
+			th Controller Variable
+			td {{controllerVariable}}
+		tr
+			th Service Variable
+			td {{nes.serviceVariable}}
+section
+	h2 Panels
+	.row
+		template(ngFor='', let-panelStyle='', [ngForOf]='panelStyles', let-i='index')
+			section.col-sm-6.col-md-4.col-lg-3
+				.panel([ngClass]="'panel-' + panelStyle")
+					.panel-heading
+						h3.panel-title {{_.capitalize(panelStyle)}} Panel
+					.panel-body  Paragraph in panel
+			.clearfix.visible-xs([ngClass]="{\
+				'visible-sm': !((i + 1) % 2),\
+				'visible-md': !((i + 1) % 3),\
+				'visible-lg': !((i + 1) % 4)\
+			}")

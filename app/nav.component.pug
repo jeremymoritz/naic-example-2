@@ -1,0 +1,24 @@
+nav.navbar.navbar-default.navbar-static-top
+	//-	nav gets container fluid (stretches across full width of page)
+	.container-fluid
+		//- hamburger button on mobile browsers
+		.navbar-header
+			button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#naic-navbar-collapse', aria-expanded='false')
+				span.sr-only Toggle navigation
+				//- hamburger icon
+				i.fa.fa-bars.fa-lg
+			a.navbar-brand(routerLink='home')
+				img(width='67', src='https://eapps.naic.org/public/common-ui/enterprise/v1/img/naicLogo_brandmark-nav.png', alt='NAIC Logo')
+		#naic-navbar-collapse.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				li(*ngFor='let navLink of navLinks.slice(0,2)', routerLinkActive='active')
+					a([routerLink]='[navLink.path]', data-toggle='collapse', (click)='collapseNavbar(); $event.stopPropagation()')
+						| #[i.fa.fa-lg([ngClass]="'fa-' + navLink.icon")] {{navLink.display}}
+				//- dropdown within menu
+				li.dropdown
+					a.dropdown-toggle.clickable(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+						| Dropdown #[i.fa.fa-caret-down]
+					ul.dropdown-menu
+						li(*ngFor='let navLink of navLinks.slice(2)', routerLinkActive='active')
+							a([routerLink]='[navLink.path]', data-toggle='collapse', (click)='collapseNavbar(); $event.stopPropagation()')
+								| #[i.fa.fa-lg([ngClass]="'fa-' + navLink.icon")] {{navLink.display}}

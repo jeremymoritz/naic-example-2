@@ -1,0 +1,21 @@
+section
+	h2 Alerts
+	.row
+		template(ngFor='', let-alertObj='', [ngForOf]='sortedAlertObjects()', let-i='index')
+			.col-md-6
+				.alert.alert-dismissable([ngClass]="'alert-' + alertObj.style")
+					button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+					| #[strong {{alertObj.header}}!]
+					| {{alertObj.message}}
+			.clearfix.visible-sm([ngClass]="!((i + 1) / 2) ? 'visible-md visible-lg' : ''")
+	.row
+		template(ngFor='', let-alertObj='', [ngForOf]='sortedAlertObjects(true)', let-i='index')
+			.col-md-6
+				.alert.alert-dismissable([ngClass]="'alert-' + alertObj.style")
+					button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+					h4 {{alertObj.header}}!
+					p {{alertObj.message}}.
+						| #[a.alert-link Inner Link], est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+					p
+						| #[a.btn.clickable([ngClass]="'btn-' + alertObj.style") Take this action] #[a.btn.btn-link.clickable Or cancel.]
+			.clearfix.visible-sm([ngClass]="!((i + 1) / 2) ? 'visible-md visible-lg' : ''")
