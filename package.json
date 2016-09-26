@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "pug": "pug --pretty --watch --obj pug-options.json ./index.pug ./app",
+    "pug": "pug --obj pug.config.json --pretty --watch ./index.pug ./app",
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run pug\""
   },
   "license": "ISC",
