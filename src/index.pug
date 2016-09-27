@@ -1,0 +1,39 @@
+doctype html
+html
+	head
+		base(href='/')
+		title NAIC Angular 2 Example App
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(href='lib/bootstrap/css/bootstrap.css', rel='stylesheet')
+		link(href='lib/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+		link(href='css/bootflat.css', rel='stylesheet')
+		link(href='css/naic-example.css', rel='stylesheet')
+
+		script(src='lib/lodash.js')
+		script(src='lib/jquery.min.js')
+		script(src='lib/lodash.js')
+		script(src='lib/moment.min.js')
+		script(src='lib/bootstrap/js/bootstrap.min.js')
+		//- Common UI
+		//- script(src='http://localhost:8080/public/common-ui/enterprise/v1/js/global-main.js')
+
+		//- Polyfill(s) for older browsers
+		script(src='lib/shim.min.js')
+		script(src='lib/zone.js')
+		script(src='lib/Reflect.js')
+		script(src='lib/system.src.js')
+		script(src='lib/systemjs.config.js')
+		script.
+			System.import('app').catch(function(err) {
+				console.error(err);
+			});
+			// naic.ui('ready', function () {
+			// 	naic.ui('title', 'NAIC Example App');
+			// 	naic.ui('bannerBackground', {background: 'http://localhost:8080/public/images/rdc-banner-blk.png'});
+			// 	naic.ui('bannerLogo', {appLogo: 'http://localhost:8080/public/images/rdc-abbr-logo-white.png'});
+			// });
+	body
+		ne2-app
+			| Loading...
+			i.fa.fa-spinner.fa-spin.fa-lg

@@ -15,9 +15,6 @@ import {NaicExampleService} from './naic-example.service';
 	`
 })
 export class AppComponent {
-	title: string = 'NAIC Angular 2 Template App';
-	angularVersion: number = 2;
-
 	constructor(private nes: NaicExampleService) {
 		//	changing this service value (will persist to other components);
 		_.assign(nes, {serviceVariable: 'This is a service variable, available across multiple scopes through dependency injection'});

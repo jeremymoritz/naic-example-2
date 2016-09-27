@@ -1,14 +1,51 @@
 {
   "name": "naic-example-2",
   "version": "1.1.0",
+  "description": "Angular 2 Single-Page App Template for NAIC",
+  "config": {
+    "src": "src",
+    "dist": "dist"
+  },
   "scripts": {
+    "clean": "rm -r $npm_package_config_dist/*",
     "lite": "lite-server",
     "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
     "typings": "typings",
-    "pug": "pug --obj pug.config.json --pretty --watch ./index.pug ./app",
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run pug\""
+
+    "precopy": "mkdir -p dist/lib & mkdir -p dist/node_modules",
+    "copy:static": "cp -r src/static/ dist/",
+    "copy:angular": "cp -r node_modules/@angular dist/node_modules/@angular/",
+    "copy:angular2-in-memory-web-api": "cp -r node_modules/angular2-in-memory-web-api/ dist/node_modules/angular2-in-memory-web-api/",
+    "copy:rxjs": "cp -r node_modules/rxjs/ dist/node_modules/rxjs/",
+    "copy:bootstrap": "mkdir -p dist/lib/bootstrap && cp -r node_modules/bootstrap/dist/ dist/lib/bootstrap/",
+    "copy:font-awesome": "mkdir -p dist/lib/font-awesome && cp -r node_modules/font-awesome/ dist/lib/font-awesome/",
+    "copy:lodash": "cp node_modules/lodash/lodash.js dist/lib/",
+    "copy:jquery": "cp node_modules/jquery/dist/jquery.min.js dist/lib/",
+    "copy:moment": "cp node_modules/moment/min/moment.min.js dist/lib/",
+    "copy:shim": "cp node_modules/core-js/client/shim.min.js dist/lib/",
+    "copy:zone": "cp node_modules/zone.js/dist/zone.js dist/lib/",
+    "copy:reflect": "cp node_modules/reflect-metadata/Reflect.js dist/lib/",
+    "copy:system": "cp node_modules/systemjs/dist/system.src.js dist/lib/",
+    "copy:system-config": "cp systemjs.config.js dist/lib/",
+    "copy": "npm run copy:static & npm run copy:angular & npm run copy:angular2-in-memory-web-api & npm run copy:rxjs & npm run copy:bootstrap & npm run copy:font-awesome & npm run copy:lodash & npm run copy:jquery & npm run copy:moment & npm run copy:shim & npm run copy:zone & npm run copy:reflect & npm run copy:system & npm run copy:system-config",
+
+    "build:copy": "npm run copy",
+    "build:css": "node-sass $npm_package_config_src --output $npm_package_config_dist",
+    "build:html": "pug --obj pug.config.json --pretty $npm_package_config_src --out $npm_package_config_dist",
+    "build:js": "tsc",
+    "build": "concurrently \"npm run build:copy\" \"npm run build:js\" \"npm run build:css\" \"npm run build:html\"",
+
+    "watch:css": "rerun-script",
+    "build:watch:css": "concurrently \"npm run build:css\" \"npm run watch:css\"",
+    "build:watch:html": "pug --obj pug.config.json --pretty --watch $npm_package_config_src --out $npm_package_config_dist",
+    "build:watch:js": "tsc --watch",
+    "build:watch": "concurrently \"npm run build:watch:js\" \"npm run build:watch:html\" \"npm run build:watch:css\"",
+
+    "dev": "concurrently \"npm run build:watch\" \"npm run lite\"",
+    "start": "npm run copy & npm run dev"
+  },
+  "watches": {
+    "build:css": "src/**/*.scss"
   },
   "license": "ISC",
   "dependencies": {
@@ -22,21 +59,25 @@
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
     "angular2-in-memory-web-api": "0.0.20",
+    "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0",
+    "lodash": "^4.16.0",
+    "moment": "^2.15.1",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.27",
-    "zone.js": "^0.6.23",
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.3",
-    "jquery": "^3.1.0",
-    "lodash": "^4.16.0"
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "concurrently": "^2.2.0",
     "lite-server": "^2.2.2",
+    "node-sass": "^3.10.0",
     "pug": "^2.0.0-beta6",
     "pug-cli": "latest",
+    "rerun-script": "^0.6.0",
+    "sass-graph": "^2.1.2",
     "typescript": "^2.0.2",
     "typings": "^1.3.2"
   }

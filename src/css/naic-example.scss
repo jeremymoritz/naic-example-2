@@ -1,5 +1,7 @@
-body {background: #f1f2f6;}
-[(click)], .clickable {cursor: pointer;}
+$grayish: #f1f2f6;
+
+body {background: $grayish;}
+[click], .clickable {cursor: pointer;}
 .bottom-buffer {margin-bottom: 10px;}
 .btn.btn-info.active, .btn.btn-info:active {
 	background-color: #37bc9b;

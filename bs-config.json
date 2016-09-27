@@ -1,0 +1,11 @@
+{
+	"port": 6242,
+	"server": {"baseDir": "./dist"},
+	"watchOptions": {
+		"ignored": [
+			"dist/node_modules",
+			"dist/lib"
+		]
+	},
+	"injectChanges": true
+}
