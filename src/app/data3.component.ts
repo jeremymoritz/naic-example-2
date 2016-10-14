@@ -10,7 +10,7 @@ import {NaicExampleService} from './naic-example.service';
 })
 export class Data3Component implements OnInit {
 	buttons: any[];
-	buttonStates: any[];
+	buttonStates: any;
 	thisForm: any;
 	usStateOptions: State[];
 
