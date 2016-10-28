@@ -22,7 +22,8 @@
     "copy:reflect": "copyfiles --up 2 node_modules/reflect-metadata/Reflect.js dist/lib/",
     "copy:system": "copyfiles --up 3 node_modules/systemjs/dist/system.src.js dist/lib/",
     "copy:system-config": "copyfiles systemjs.config.js dist/lib/",
-    "copy": "concurrently \"npm run copy:static\" \"npm run copy:angular\" \"npm run copy:angular2-in-memory-web-api\" \"npm run copy:rxjs\" \"npm run copy:bootstrap\" \"npm run copy:font-awesome\" \"npm run copy:lodash\" \"npm run copy:jquery\" \"npm run copy:moment\" \"npm run copy:shim\" \"npm run copy:zone\" \"npm run copy:reflect\" \"npm run copy:system\" \"npm run copy:system-config\"",
+    "copy:sources-ts": "copyfiles \"src/app/**/*.ts\" dist/",
+    "copy": "concurrently \"npm run copy:static\" \"npm run copy:angular\" \"npm run copy:angular2-in-memory-web-api\" \"npm run copy:rxjs\" \"npm run copy:bootstrap\" \"npm run copy:font-awesome\" \"npm run copy:lodash\" \"npm run copy:jquery\" \"npm run copy:moment\" \"npm run copy:shim\" \"npm run copy:zone\" \"npm run copy:reflect\" \"npm run copy:system\" \"npm run copy:system-config\" \"npm run copy:sources-ts\"",
 
     "build:copy": "npm run copy",
     "build:css": "node-sass src --output dist",
@@ -34,7 +35,8 @@
     "build:watch:css": "concurrently \"npm run build:css\" \"npm run watch:css\"",
     "build:watch:html": "pug --obj pug.config.json --pretty --watch src --out dist",
     "build:watch:js": "tsc --watch",
-    "build:watch": "concurrently \"npm run build:watch:js\" \"npm run build:watch:html\" \"npm run build:watch:css\"",
+    "build:watch:js-with-maps": "concurrently \"npm run copy:sources-ts\" \"npm run build:watch:js\"",
+    "build:watch": "concurrently \"npm run build:watch:js-with-maps\" \"npm run build:watch:html\" \"npm run build:watch:css\"",
 
     "dev": "concurrently \"npm run build:watch\" \"npm run lite\"",
     "start": "concurrently \"npm run copy\" \"npm run dev\""
@@ -63,6 +65,7 @@
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.27",
+    "typings": "^1.4.0",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
@@ -75,6 +78,6 @@
     "rerun-script": "^0.6.0",
     "sass-graph": "^2.1.2",
     "typescript": "^2.0.2",
-    "typings": "^1.3.2"
+    "typings": "^1.4.0"
   }
 }
