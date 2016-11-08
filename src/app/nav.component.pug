@@ -7,8 +7,6 @@ nav.navbar.navbar-default.navbar-static-top
 				span.sr-only Toggle navigation
 				//- hamburger icon
 				i.fa.fa-bars.fa-lg
-			a.navbar-brand(routerLink='home')
-				img(width='67', src='https://eapps.naic.org/public/common-ui/enterprise/v1/img/naicLogo_brandmark-nav.png', alt='NAIC Logo')
 		#naic-navbar-collapse.collapse.navbar-collapse
 			ul.nav.navbar-nav
 				li(*ngFor='let navLink of navLinks.slice(0,2)', routerLinkActive='active')
