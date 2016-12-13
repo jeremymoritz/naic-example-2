@@ -3,6 +3,7 @@ import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {State} from './state';
+import * as _ from 'lodash';
 
 let supervisors: any[] = [
 	{name: 'Alvin', department: 'HR'},

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 import {NaicExampleService} from './naic-example.service';
+import * as moment from 'moment';
 
 @Component({
   moduleId: module.id,

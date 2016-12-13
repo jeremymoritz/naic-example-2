@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
-import {InMemoryWebApiModule} from 'angular2-in-memory-web-api';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService}  from './in-memory-data.service';
 
 import {AppComponent} from './app.component';
@@ -18,6 +18,8 @@ import {Data3Component} from './data3.component';
 
 import {NaicExampleService} from './naic-example.service';
 import {routing} from './app.routing';
+
+import * as _ from 'lodash';
 
 @NgModule({
 	imports: [

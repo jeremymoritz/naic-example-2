@@ -1,0 +1,28 @@
+
+<section>
+  <h2>Alerts</h2>
+  <div class="row">
+    <template ngFor="" let-alertObj="" [ngForOf]="sortedAlertObjects()" let-i="index">
+      <div class="col-md-6">
+        <div class="alert alert-dismissable" [ngClass]="'alert-' + alertObj.style">
+          <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{alertObj.header}}!</strong>
+          {{alertObj.message}}
+        </div>
+      </div>
+      <div class="clearfix visible-sm" [ngClass]="!((i + 1) / 2) ? 'visible-md visible-lg' : ''"></div>
+    </template>
+  </div>
+  <div class="row">
+    <template ngFor="" let-alertObj="" [ngForOf]="sortedAlertObjects(true)" let-i="index">
+      <div class="col-md-6">
+        <div class="alert alert-dismissable" [ngClass]="'alert-' + alertObj.style">
+          <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4>{{alertObj.header}}!</h4>
+          <p>{{alertObj.message}}.<a class="alert-link">Inner Link</a>, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+          <p><a class="btn clickable" [ngClass]="'btn-' + alertObj.style">Take this action</a> <a class="btn btn-link clickable">Or cancel.</a></p>
+        </div>
+      </div>
+      <div class="clearfix visible-sm" [ngClass]="!((i + 1) / 2) ? 'visible-md visible-lg' : ''"></div>
+    </template>
+  </div>
+</section>

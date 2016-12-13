@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {NaicExampleService} from './naic-example.service';
+import * as _ from 'lodash';
 
 @Component({
   moduleId: module.id,
