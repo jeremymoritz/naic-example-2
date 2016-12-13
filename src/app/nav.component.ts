@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ne2-nav',
 	templateUrl: './nav.component.html'
 })

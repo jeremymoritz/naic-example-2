@@ -4,9 +4,11 @@ import {RouterModule} from '@angular/router';
 import {NaicExampleService} from './naic-example.service';
 
 import * as _ from 'lodash';
+import '../css/bootflat.scss';
+import '../css/naic-example.scss';
+import 'font-awesome-webpack';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ne2-app',
 	template: `
 		<ne2-nav></ne2-nav>

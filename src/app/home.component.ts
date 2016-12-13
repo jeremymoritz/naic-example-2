@@ -4,7 +4,6 @@ import {NaicExampleService} from './naic-example.service';
 import * as moment from 'moment';
 
 @Component({
-  moduleId: module.id,
   selector: 'ne2-home',
   templateUrl: './home.component.html'
 })
