@@ -13,5 +13,3 @@ packages
 # files
 app/**/*.js
 app/**/*.map
-app/**/*.html
-index.html
